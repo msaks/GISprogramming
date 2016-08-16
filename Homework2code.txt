@@ -1,0 +1,39 @@
+>>> mxd = arcpy.mapping.MapDocument("CURRENT")
+... for df in arcpy.mapping.ListDataFrames(mxd):
+...     mxd.activeView = df.name
+...     layerList = arcpy.mapping.ListLayers(mxd, "", df)
+...     for lyr in layerList:
+...         if lyr.isFeatureLayer and not (lyr.isBroken):
+...             desc = arcpy.Describe(lyr)
+...             geomType = desc.shapeType
+...             if geomType == 'Point':
+...                 buffDistance = "3500 Meters"
+...                 buffdistName = "3500Meters"
+...                 outputName = "R:/4590/StudentFolders/Sakinejad/Homework/Homework2/BufferOutput.gdb/"+lyr.name+buffdistName
+...                 arcpy.Buffer_analysis(lyr, outputName, buffDistance)
+...                 f_names = [f.name for f in arcpy.ListFields(lyr)]
+...                 print lyr.name+" fields:"
+...                 print "------------------"
+...                 for x in f_names:
+...                     print x 
+...                 lyr.visible = True
+...                 print "------------------"
+...             if geomType == 'Polygon':
+...                 buffDistance = "1500 Meters"
+...                 buffdistName = "1500Meters"
+...                 outputName = "R:/4590/StudentFolders/Sakinejad/Homework/Homework2/BufferOutput.gdb/"+lyr.name+buffdistName
+...                 arcpy.Buffer_analysis(lyr, outputName, buffDistance)
+...                 lyr.visible = True
+...             if geomType == 'Polyline':
+...                 buffDistance = "2500 Meters"
+...                 buffdistName = "2500Meters"
+...                 outputName = "R:/4590/StudentFolders/Sakinejad/Homework/Homework2/BufferOutput.gdb/"+lyr.name+buffdistName
+...                 arcpy.Buffer_analysis(lyr, outputName, buffDistance)
+...                 lyr.visible = True
+...         else:
+...             print lyr.name+" is either broken or is not a feature class"
+...         arcpy.RefreshActiveView()
+... arcpy.RefreshActiveView()
+... 
+
+
