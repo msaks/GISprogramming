@@ -1,0 +1,22 @@
+import os
+import numpy
+
+inputFileName = 'H:/GISProgramming/Homework1/input.txt'
+inputFile = open('H:/GISProgramming/Homework1/input.txt',"r")
+lines = inputFile.read().splitlines()
+linesFloat = map(int, lines)
+minNum = str(min(linesFloat))
+maxNum = str(max(linesFloat))
+stDev = str(numpy.std(linesFloat))
+average = str(numpy.mean(linesFloat))
+numRecords = len(linesFloat)
+outputFile = open('H:/GISProgramming/Homework1/output.txt',"w")
+
+outputFile.write("Input file path and name: %s \n" % inputFileName)
+outputFile.write("Number of records: %s \n" % numRecords)
+outputFile.write("Mean: %s \n" % average)
+outputFile.write("Minimum: %s \n" % minNum)
+outputFile.write("Maximum: %s \n" % maxNum)
+outputFile.write("Standard Deviation: %s \n" % stDev)
+outputFile.close()
+

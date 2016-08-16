@@ -1,0 +1,6 @@
+Input file path and name: H:/GISProgramming/Homework1/input.txt 
+Number of records: 50 
+Mean: 2 
+Minimum: 2 
+Maximum: 375 
+Standard Deviation: 118.106223375 
